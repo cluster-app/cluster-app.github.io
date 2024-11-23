@@ -1,444 +1,248 @@
 <html><head><base href="/" target="_blank">
-<style>
-:root {
-  --primary: #4A90E2;
-  --primary-light: #6BA4E8; 
-  --primary-dark: #2E74C9;
-  --gray-dark: #2C3E50;
-  --gray: #95A5A6;
-  --gray-light: #ECF0F1;
-  --white: #FFFFFF;
-  --shadow: 0 2px 15px rgba(0,0,0,0.1);
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
-}
-
-body {
-  display: flex;
-  background: var(--gray-light);
-}
-
-.sidenav {
-  width: 250px;
-  height: 100vh;
-  background: var(--white);
-  padding: 2rem 1rem;
-  box-shadow: var(--shadow);
-  position: fixed;
-  transition: 0.3s ease;
-}
-
-.logo {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--primary);
-  margin-bottom: 3rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.nav-item {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem;
-  color: var(--gray-dark);
-  text-decoration: none;
-  border-radius: 8px;
-  transition: 0.3s ease;
-}
-
-.nav-item:hover {
-  background: var(--primary-light);
-  color: var(--white);
-}
-
-.nav-item.active {
-  background: var(--primary);
-  color: var(--white);
-}
-
-.main-content {
-  margin-left: 250px;
-  padding: 2rem;
-  width: calc(100% - 250px);
-}
-
-.profile-container {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.profile-header {
-  background: var(--white);
-  border-radius: 12px;
-  padding: 2rem;
-  margin-bottom: 2rem;
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-}
-
-.profile-avatar {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background: var(--gray-light);
-  position: relative;
-}
-
-.edit-avatar {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  background: var(--primary);
-  color: var(--white);
-  padding: 0.5rem;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.profile-info {
-  flex: 1;
-}
-
-.profile-name {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--gray-dark);
-  margin-bottom: 0.5rem;
-}
-
-.profile-bio {
-  color: var(--gray);
-  margin-bottom: 1rem;
-  line-height: 1.5;
-}
-
-.profile-stats {
-  display: flex;
-  gap: 2rem;
-}
-
-.stat-item {
-  text-align: center;
-}
-
-.stat-value {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--gray-dark);
-}
-
-.stat-label {
-  color: var(--gray);
-  font-size: 0.9rem;
-}
-
-.profile-sections {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 2rem;
-}
-
-.section-card {
-  background: var(--white);
-  border-radius: 12px;
-  padding: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-.section-title {
-  font-size: 1.2rem;
-  color: var(--gray-dark);
-  margin-bottom: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.edit-btn {
-  background: none;
-  border: none;
-  color: var(--primary);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.info-item {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.info-icon {
-  color: var(--primary);
-  width: 20px;
-}
-
-.info-content {
-  flex: 1;
-}
-
-.info-label {
-  color: var(--gray);
-  font-size: 0.9rem;
-  margin-bottom: 0.3rem;
-}
-
-.info-value {
-  color: var(--gray-dark);
-}
-
-.skill-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.skill-tag {
-  background: var(--gray-light);
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  color: var(--gray-dark);
-  font-size: 0.9rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.skill-tag i {
-  width: 16px;
-  height: 16px;
-}
-
-.recent-activity {
-  margin-top: 1rem;
-}
-
-.activity-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  margin-bottom: 1rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--gray-light);
-}
-
-.activity-icon {
-  background: var(--primary-light);
-  color: var(--white);
-  padding: 0.5rem;
-  border-radius: 8px;
-}
-
-.activity-content {
-  flex: 1;
-}
-
-.activity-text {
-  color: var(--gray-dark);
-  margin-bottom: 0.3rem;
-}
-
-.activity-time {
-  color: var(--gray);
-  font-size: 0.9rem;
-}
-</style>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"></script>
-</head>
-<body>
-
-<nav class="sidenav">
-  <div class="logo">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <circle cx="12" cy="12" r="10"/>
-      <path d="M8 12h8"/>
-      <path d="M12 8v8"/>
-    </svg>
-    Cluster
-  </div>
+  <style>
+  :root {
+    --primary: #4A90E2;
+    --primary-light: #6BA4E8;
+    --primary-dark: #2E74C9;
+    --gray-dark: #2C3E50;
+    --gray: #95A5A6;
+    --gray-light: #ECF0F1;
+    --white: #FFFFFF;
+    --shadow: 0 2px 15px rgba(0,0,0,0.1);
+  }
   
-  <a href="https://cluster.app/dashboard" class="nav-item">
-    <i data-feather="home"></i>
-    Accueil
-  </a>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+  }
   
-  <a href="https://cluster.app/my-clusters" class="nav-item">
-    <i data-feather="folder"></i>
-    Mes Clusters
-  </a>
+  body {
+    display: flex;
+    background: var(--gray-light);
+  }
   
-  <a href="https://cluster.app/explore" class="nav-item">
-    <i data-feather="compass"></i>
-    Explorer
-  </a>
+  /* Side Navigation */
+  .sidenav {
+    width: 250px;
+    height: 100vh;
+    background: var(--white);
+    padding: 2rem 1rem;
+    box-shadow: var(--shadow);
+    position: fixed;
+    transition: 0.3s ease;
+  }
   
-  <a href="https://cluster.app/notifications" class="nav-item">
-    <i data-feather="bell"></i>
-    Notifications
-  </a>
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
   
-  <a href="https://cluster.app/profile" class="nav-item active">
-    <i data-feather="user"></i>
-    Profil
-  </a>
-</nav>
-
-<main class="main-content">
-  <div class="profile-container">
-    <div class="profile-header">
-      <div class="profile-avatar">
-        <div class="edit-avatar">
-          <i data-feather="camera"></i>
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    color: var(--gray-dark);
+    text-decoration: none;
+    border-radius: 8px;
+    transition: 0.3s ease;
+  }
+  
+  .nav-item:hover {
+    background: var(--primary-light);
+    color: var(--white);
+  }
+  
+  .nav-item.active {
+    background: var(--primary);
+    color: var(--white);
+  }
+  
+  /* Main Content */
+  .main-content {
+    margin-left: 250px;
+    padding: 2rem;
+    width: calc(100% - 250px);
+  }
+  
+  /* Dashboard Cards */
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .progress-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--gray-light);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 1rem;
+  }
+  
+  .progress {
+    height: 100%;
+    background: var(--primary);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+  }
+  
+  /* Animations */
+  @keyframes slideIn {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  .notification {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    background: var(--white);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    animation: slideIn 0.3s ease;
+  }
+  
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"></script>
+  </head>
+  <body>
+  
+  <!-- Side Navigation -->
+  <nav class="sidenav">
+    <div class="logo">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M8 12h8"/>
+        <path d="M12 8v8"/>
+      </svg>
+      Cluster
+    </div>
+    
+    <a href="https://cluster.app/dashboard" class="nav-item active">
+      <i data-feather="home"></i>
+      Accueil
+    </a>
+    
+    <a href="https://cluster.app/my-clusters" class="nav-item">
+      <i data-feather="folder"></i>
+      Mes Clusters
+    </a>
+    
+    <a href="https://cluster.app/explore" class="nav-item">
+      <i data-feather="compass"></i>
+      Explorer
+    </a>
+    
+    <a href="https://cluster.app/notifications" class="nav-item">
+      <i data-feather="bell"></i>
+      Notifications
+    </a>
+    
+    <a href="https://cluster.app/profile" class="nav-item">
+      <i data-feather="user"></i>
+      Profil
+    </a>
+  </nav>
+  
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="dashboard-grid">
+      <!-- Active Clusters -->
+      <div class="card">
+        <h2>Clusters Actifs</h2>
+        <p>3 projets en cours</p>
+        <div class="progress-bar">
+          <div class="progress" style="width: 65%"></div>
         </div>
       </div>
-      <div class="profile-info">
-        <h1 class="profile-name">Thomas Martin</h1>
-        <p class="profile-bio">UI/UX Designer & Front-end Developer | Passionné par la création d'expériences numériques innovantes</p>
-        <div class="profile-stats">
-          <div class="stat-item">
-            <div class="stat-value">12</div>
-            <div class="stat-label">Clusters</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-value">234</div>
-            <div class="stat-label">Contributions</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-value">1.2k</div>
-            <div class="stat-label">Connexions</div>
-          </div>
+      
+      <!-- Suggestions -->
+      <div class="card">
+        <h2>Suggestions</h2>
+        <p>Découvrez des projets similaires</p>
+        <div class="clusters-preview">
+          <!-- Cluster previews would go here -->
         </div>
+      </div>
+      
+      <!-- Recent Activity -->
+      <div class="card">
+        <h2>Activité Récente</h2>
+        <p>Dernières mises à jour de vos projets</p>
       </div>
     </div>
-
-    <div class="profile-sections">
-      <div class="main-section">
-        <div class="section-card">
-          <div class="section-title">
-            Informations personnelles
-            <button class="edit-btn">
-              <i data-feather="edit-2"></i>
-              Modifier
-            </button>
-          </div>
-          <div class="info-item">
-            <i data-feather="mail" class="info-icon"></i>
-            <div class="info-content">
-              <div class="info-label">Email</div>
-              <div class="info-value">thomas.martin@email.com</div>
-            </div>
-          </div>
-          <div class="info-item">
-            <i data-feather="map-pin" class="info-icon"></i>
-            <div class="info-content">
-              <div class="info-label">Localisation</div>
-              <div class="info-value">Paris, France</div>
-            </div>
-          </div>
-          <div class="info-item">
-            <i data-feather="globe" class="info-icon"></i>
-            <div class="info-content">
-              <div class="info-label">Site web</div>
-              <div class="info-value">www.thomasmartin.dev</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="section-card">
-          <div class="section-title">
-            Compétences
-            <button class="edit-btn">
-              <i data-feather="plus"></i>
-              Ajouter
-            </button>
-          </div>
-          <div class="skill-tags">
-            <span class="skill-tag"><i data-feather="pen-tool"></i>UI Design</span>
-            <span class="skill-tag"><i data-feather="users"></i>UX Research</span>
-            <span class="skill-tag"><i data-feather="code"></i>HTML/CSS</span>
-            <span class="skill-tag"><i data-feather="coffee"></i>JavaScript</span>
-            <span class="skill-tag"><i data-feather="react"></i>React</span>
-            <span class="skill-tag"><i data-feather="figma"></i>Figma</span>
-            <span class="skill-tag"><i data-feather="layout"></i>Design System</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="side-section">
-        <div class="section-card">
-          <div class="section-title">Activité récente</div>
-          <div class="recent-activity">
-            <div class="activity-item">
-              <div class="activity-icon">
-                <i data-feather="message-square"></i>
-              </div>
-              <div class="activity-content">
-                <div class="activity-text">A commenté dans UI/UX Community</div>
-                <div class="activity-time">Il y a 2h</div>
-              </div>
-            </div>
-            <div class="activity-item">
-              <div class="activity-icon">
-                <i data-feather="share-2"></i>
-              </div>
-              <div class="activity-content">
-                <div class="activity-text">A partagé un article sur le design system</div>
-                <div class="activity-time">Il y a 5h</div>
-              </div>
-            </div>
-            <div class="activity-item">
-              <div class="activity-icon">
-                <i data-feather="users"></i>
-              </div>
-              <div class="activity-content">
-                <div class="activity-text">A rejoint Frontend Masters</div>
-                <div class="activity-time">Il y a 1j</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</main>
-
-<script>
-feather.replace();
-
-document.querySelectorAll('.edit-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    console.log('Edit button clicked');
-  });
-});
-
-document.querySelector('.edit-avatar').addEventListener('click', () => {
-  console.log('Avatar edit clicked');
-});
-
-document.querySelectorAll('.skill-tag').forEach(tag => {
-  tag.addEventListener('mouseenter', () => {
-    tag.style.background = '#6BA4E8';
-    tag.style.color = '#FFFFFF';
+  </main>
+  
+  <script>
+  // Initialize Feather Icons
+  feather.replace();
+  
+  // Example notification system
+  function showNotification(message) {
+    const notification = document.createElement('div');
+    notification.classList.add('notification');
+    notification.textContent = message;
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+      notification.remove();
+    }, 3000);
+  }
+  
+  // Example usage
+  setTimeout(() => {
+    showNotification('Nouveau commentaire dans le projet "Design System"');
+  }, 2000);
+  
+  // Progress bar animation
+  document.querySelectorAll('.progress').forEach(progress => {
+    const targetWidth = progress.style.width;
+    progress.style.width = '0';
+    setTimeout(() => {
+      progress.style.width = targetWidth;
+    }, 300);
   });
   
-  tag.addEventListener('mouseleave', () => {
-    tag.style.background = '#ECF0F1';
-    tag.style.color = '#2C3E50';
+  // Hover effects for cards
+  document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      card.style.transform = 'translateY(-5px)';
+    });
+    
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'translateY(0)';
+    });
   });
-});
-</script>
-
-</body></html>
+  </script>
+  
+  </body></html>
