@@ -1,0 +1,311 @@
+<html><head><base href="/" target="_blank">
+<style>
+:root {
+  --primary: #4A90E2;
+  --primary-light: #6BA4E8;
+  --primary-dark: #2E74C9;
+  --gray-dark: #2C3E50;
+  --gray: #95A5A6;
+  --gray-light: #ECF0F1;
+  --white: #FFFFFF;
+  --shadow: 0 2px 15px rgba(0,0,0,0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  display: flex;
+  background: var(--gray-light);
+}
+
+.sidenav {
+  width: 250px;
+  height: 100vh;
+  background: var(--white);
+  padding: 2rem 1rem;
+  box-shadow: var(--shadow);
+  position: fixed;
+  transition: 0.3s ease;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  color: var(--gray-dark);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: 0.3s ease;
+}
+
+.nav-item:hover {
+  background: var(--primary-light);
+  color: var(--white);
+}
+
+.nav-item.active {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.main-content {
+  margin-left: 250px;
+  padding: 2rem;
+  width: calc(100% - 250px);
+}
+
+.notifications-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  color: var(--gray-dark);
+  margin-bottom: 1.5rem;
+}
+
+.notification-filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.filter-btn {
+  padding: 0.5rem 1.5rem;
+  background: var(--white);
+  border: none;
+  border-radius: 20px;
+  color: var(--gray-dark);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn.active {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.notification-item {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.notification-item:hover {
+  transform: translateX(5px);
+}
+
+.notification-item.unread::before {
+  content: '';
+  position: absolute;
+  left: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background: var(--primary);
+  border-radius: 50%;
+}
+
+.notification-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--gray-light);
+}
+
+.notification-content {
+  flex: 1;
+}
+
+.notification-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.notification-title {
+  font-weight: 600;
+  color: var(--gray-dark);
+}
+
+.notification-time {
+  color: var(--gray);
+  font-size: 0.9rem;
+}
+
+.notification-text {
+  color: var(--gray);
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+
+.notification-cluster {
+  font-size: 0.9rem;
+  color: var(--primary);
+}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"></script>
+</head>
+<body>
+
+<nav class="sidenav">
+  <div class="logo">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="10"/>
+      <path d="M8 12h8"/>
+      <path d="M12 8v8"/>
+    </svg>
+    Cluster
+  </div>
+  
+  <a href="index.html" class="nav-item active">
+    <i data-feather="home"></i>
+    Accueil
+  </a>
+  
+  <a href="my-cluster.html" class="nav-item">
+    <i data-feather="folder"></i>
+    Mes Clusters
+  </a>
+  
+  <a href="explorer.html" class="nav-item">
+    <i data-feather="compass"></i>
+    Explorer
+  </a>
+  
+  <a href="notications.html" class="nav-item">
+    <i data-feather="bell"></i>
+    Notifications
+  </a>
+  
+  <a href="profil.html" class="nav-item">
+    <i data-feather="user"></i>
+    Profil
+  </a>
+</nav>
+
+<main class="main-content">
+  <div class="notifications-container">
+    <h2 class="section-title">Notifications</h2>
+    
+    <div class="notification-filters">
+      <button class="filter-btn active">Toutes</button>
+      <button class="filter-btn">Non lues</button>
+      <button class="filter-btn">Mentions</button>
+      <button class="filter-btn">Réponses</button>
+    </div>
+
+    <div class="notifications-list">
+      <!-- Notification 1 -->
+      <div class="notification-item unread">
+        <div class="notification-avatar"></div>
+        <div class="notification-content">
+          <div class="notification-header">
+            <span class="notification-title">Marie Durant vous a mentionné</span>
+            <span class="notification-time">Il y a 5 min</span>
+          </div>
+          <p class="notification-text">@Thomas as-tu vu les dernières mises à jour du design system ?</p>
+          <div class="notification-cluster">Dans UI/UX Community</div>
+        </div>
+      </div>
+
+      <!-- Notification 2 -->
+      <div class="notification-item">
+        <div class="notification-avatar"></div>
+        <div class="notification-content">
+          <div class="notification-header">
+            <span class="notification-title">Nouveau membre</span>
+            <span class="notification-time">Il y a 2h</span>
+          </div>
+          <p class="notification-text">Sophie Bernard a rejoint votre cluster</p>
+          <div class="notification-cluster">Dans React Developers</div>
+        </div>
+      </div>
+
+      <!-- Notification 3 -->
+      <div class="notification-item">
+        <div class="notification-avatar"></div>
+        <div class="notification-content">
+          <div class="notification-header">
+            <span class="notification-title">Nouvelle réponse</span>
+            <span class="notification-time">Il y a 3h</span>
+          </div>
+          <p class="notification-text">Lucas a répondu à votre discussion sur les tendances UX 2024</p>
+          <div class="notification-cluster">Dans Digital Marketing Pro</div>
+        </div>
+      </div>
+
+      <!-- Notification 4 -->
+      <div class="notification-item unread">
+        <div class="notification-avatar"></div>
+        <div class="notification-content">
+          <div class="notification-header">
+            <span class="notification-title">Invitation au cluster</span>
+            <span class="notification-time">Il y a 5h</span>
+          </div>
+          <p class="notification-text">Julie vous invite à rejoindre le cluster "Frontend Masters"</p>
+          <div class="notification-cluster">Frontend Masters</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+feather.replace();
+
+// Filter buttons functionality
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelector('.filter-btn.active').classList.remove('active');
+    btn.classList.add('active');
+    // Add filter logic here
+  });
+});
+
+// Mark notifications as read on click
+document.querySelectorAll('.notification-item').forEach(item => {
+  item.addEventListener('click', () => {
+    item.classList.remove('unread');
+  });
+});
+
+// Hover effects
+document.querySelectorAll('.notification-item').forEach(item => {
+  item.addEventListener('mouseenter', () => {
+    item.style.transform = 'translateX(10px)';
+  });
+  
+  item.addEventListener('mouseleave', () => {
+    item.style.transform = 'translateX(0)';
+  });
+});
+</script>
+
+</body></html>

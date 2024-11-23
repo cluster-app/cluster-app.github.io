@@ -1,0 +1,410 @@
+<html><head><base href="/" target="_blank">
+<style>
+:root {
+  --primary: #4A90E2;
+  --primary-light: #6BA4E8;
+  --primary-dark: #2E74C9;
+  --gray-dark: #2C3E50;
+  --gray: #95A5A6;
+  --gray-light: #ECF0F1;
+  --white: #FFFFFF;
+  --shadow: 0 2px 15px rgba(0,0,0,0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  display: flex;
+  background: var(--gray-light);
+}
+
+.sidenav {
+  width: 250px;
+  height: 100vh;
+  background: var(--white);
+  padding: 2rem 1rem;
+  box-shadow: var(--shadow);
+  position: fixed;
+  transition: 0.3s ease;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  color: var(--gray-dark);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: 0.3s ease;
+}
+
+.nav-item:hover {
+  background: var(--primary-light);
+  color: var(--white);
+}
+
+.nav-item.active {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.main-content {
+  margin-left: 250px;
+  padding: 2rem;
+  width: calc(100% - 250px);
+}
+
+.search-bar {
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.search-input {
+  width: 100%;
+  padding: 1rem 1rem 1rem 3rem;
+  border: none;
+  border-radius: 8px;
+  background: var(--white);
+  box-shadow: var(--shadow);
+  font-size: 1rem;
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gray);
+}
+
+.categories {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+}
+
+.category {
+  padding: 0.5rem 1.5rem;
+  background: var(--white);
+  border-radius: 20px;
+  color: var(--gray-dark);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.category.active {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.trending-clusters {
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  color: var(--gray-dark);
+  margin-bottom: 1rem;
+}
+
+.clusters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.cluster-card {
+  background: var(--white);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease;
+}
+
+.cluster-header {
+  height: 160px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  padding: 1rem;
+  display: flex;
+  align-items: flex-end;
+}
+
+.cluster-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(transparent, rgba(0,0,0,0.7));
+}
+
+.cluster-header h3 {
+  color: var(--white);
+  position: relative;
+  z-index: 1;
+}
+
+.cluster-body {
+  padding: 1.5rem;
+}
+
+.cluster-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.creator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.creator-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--gray-light);
+}
+
+.creator-name {
+  font-size: 0.9rem;
+  color: var(--gray-dark);
+}
+
+.cluster-stats {
+  display: flex;
+  gap: 1rem;
+  color: var(--gray);
+}
+
+.cluster-stat {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.9rem;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.tag {
+  padding: 0.3rem 0.8rem;
+  background: var(--gray-light);
+  border-radius: 15px;
+  font-size: 0.8rem;
+  color: var(--gray-dark);
+}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"></script>
+</head>
+<body>
+
+<nav class="sidenav">
+  <div class="logo">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="10"/>
+      <path d="M8 12h8"/>
+      <path d="M12 8v8"/>
+    </svg>
+    Cluster
+  </div>
+  
+  <a href="index.html" class="nav-item active">
+    <i data-feather="home"></i>
+    Accueil
+  </a>
+  
+  <a href="my-cluster.html" class="nav-item">
+    <i data-feather="folder"></i>
+    Mes Clusters
+  </a>
+  
+  <a href="explorer.html" class="nav-item">
+    <i data-feather="compass"></i>
+    Explorer
+  </a>
+  
+  <a href="notications.html" class="nav-item">
+    <i data-feather="bell"></i>
+    Notifications
+  </a>
+  
+  <a href="profil.html" class="nav-item">
+    <i data-feather="user"></i>
+    Profil
+  </a>
+</nav>
+
+<main class="main-content">
+  <div class="search-bar">
+    <i data-feather="search" class="search-icon"></i>
+    <input type="text" class="search-input" placeholder="Rechercher des clusters...">
+  </div>
+
+  <div class="categories">
+    <div class="category active">Tous</div>
+    <div class="category">Design</div>
+    <div class="category">Développement</div>
+    <div class="category">Marketing</div>
+    <div class="category">Business</div>
+    <div class="category">Education</div>
+    <div class="category">Art</div>
+    <div class="category">Musique</div>
+  </div>
+
+  <div class="trending-clusters">
+    <h2 class="section-title">Clusters Tendances</h2>
+    <div class="clusters-grid">
+      <!-- Cluster 1 -->
+      <div class="cluster-card">
+        <div class="cluster-header" style="background-image: linear-gradient(45deg, #FF6B6B, #FF8E53);">
+          <h3>UI/UX Community</h3>
+        </div>
+        <div class="cluster-body">
+          <div class="cluster-meta">
+            <div class="creator">
+              <div class="creator-avatar"></div>
+              <span class="creator-name">Marie Durant</span>
+            </div>
+          </div>
+          <div class="cluster-stats">
+            <div class="cluster-stat">
+              <i data-feather="users" size="14"></i>
+              <span>2.4k membres</span>
+            </div>
+            <div class="cluster-stat">
+              <i data-feather="message-circle" size="14"></i>
+              <span>180 discussions</span>
+            </div>
+          </div>
+          <div class="tags">
+            <span class="tag">Design</span>
+            <span class="tag">UI</span>
+            <span class="tag">UX</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cluster 2 -->
+      <div class="cluster-card">
+        <div class="cluster-header" style="background-image: linear-gradient(45deg, #4834D4, #686DE0);">
+          <h3>React Developers</h3>
+        </div>
+        <div class="cluster-body">
+          <div class="cluster-meta">
+            <div class="creator">
+              <div class="creator-avatar"></div>
+              <span class="creator-name">Thomas Martin</span>
+            </div>
+          </div>
+          <div class="cluster-stats">
+            <div class="cluster-stat">
+              <i data-feather="users" size="14"></i>
+              <span>1.8k membres</span>
+            </div>
+            <div class="cluster-stat">
+              <i data-feather="message-circle" size="14"></i>
+              <span>245 discussions</span>
+            </div>
+          </div>
+          <div class="tags">
+            <span class="tag">React</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Dev</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cluster 3 -->
+      <div class="cluster-card">
+        <div class="cluster-header" style="background-image: linear-gradient(45deg, #20BF6B, #26DE81);">
+          <h3>Digital Marketing Pro</h3>
+        </div>
+        <div class="cluster-body">
+          <div class="cluster-meta">
+            <div class="creator">
+              <div class="creator-avatar"></div>
+              <span class="creator-name">Sophie Bernard</span>
+            </div>
+          </div>
+          <div class="cluster-stats">
+            <div class="cluster-stat">
+              <i data-feather="users" size="14"></i>
+              <span>3.2k membres</span>
+            </div>
+            <div class="cluster-stat">
+              <i data-feather="message-circle" size="14"></i>
+              <span>320 discussions</span>
+            </div>
+          </div>
+          <div class="tags">
+            <span class="tag">Marketing</span>
+            <span class="tag">Digital</span>
+            <span class="tag">SEO</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+feather.replace();
+
+// Category selection
+document.querySelectorAll('.category').forEach(category => {
+  category.addEventListener('click', () => {
+    document.querySelector('.category.active').classList.remove('active');
+    category.classList.add('active');
+  });
+});
+
+// Search functionality
+const searchInput = document.querySelector('.search-input');
+searchInput.addEventListener('input', (e) => {
+  const searchTerm = e.target.value.toLowerCase();
+  // Add search logic here
+});
+
+// Card hover effects
+document.querySelectorAll('.cluster-card').forEach(card => {
+  card.addEventListener('mouseenter', () => {
+    card.style.transform = 'translateY(-5px)';
+  });
+  
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = 'translateY(0)';
+  });
+});
+</script>
+
+</body></html>

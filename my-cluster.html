@@ -1,0 +1,367 @@
+<html><head><base href="/" target="_blank">
+<style>
+:root {
+  --primary: #4A90E2;
+  --primary-light: #6BA4E8;
+  --primary-dark: #2E74C9;
+  --gray-dark: #2C3E50;
+  --gray: #95A5A6;
+  --gray-light: #ECF0F1;
+  --white: #FFFFFF;
+  --shadow: 0 2px 15px rgba(0,0,0,0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  display: flex;
+  background: var(--gray-light);
+}
+
+.sidenav {
+  width: 250px;
+  height: 100vh;
+  background: var(--white);
+  padding: 2rem 1rem;
+  box-shadow: var(--shadow);
+  position: fixed;
+  transition: 0.3s ease;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  color: var(--gray-dark);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: 0.3s ease;
+}
+
+.nav-item:hover {
+  background: var(--primary-light);
+  color: var(--white);
+}
+
+.nav-item.active {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.main-content {
+  margin-left: 250px;
+  padding: 2rem;
+  width: calc(100% - 250px);
+}
+
+/* Clusters Grid */
+.clusters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.cluster-card {
+  background: var(--white);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease;
+}
+
+.cluster-card:hover {
+  transform: translateY(-5px);
+}
+
+.cluster-header {
+  position: relative;
+  height: 120px;
+  background: linear-gradient(45deg, var(--primary), var(--primary-light));
+  padding: 1.5rem;
+  color: var(--white);
+}
+
+.cluster-type {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255,255,255,0.2);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+}
+
+.cluster-body {
+  padding: 1.5rem;
+}
+
+.cluster-title {
+  margin-bottom: 0.5rem;
+  color: var(--gray-dark);
+}
+
+.cluster-description {
+  color: var(--gray);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.cluster-stats {
+  display: flex;
+  gap: 1rem;
+  color: var(--gray);
+  font-size: 0.9rem;
+}
+
+.cluster-stat {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  background: var(--gray-light);
+  border-radius: 3px;
+  margin-top: 1rem;
+}
+
+.progress {
+  height: 100%;
+  background: var(--primary);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.create-cluster {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--primary);
+  color: var(--white);
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.create-cluster:hover {
+  transform: scale(1.1);
+}
+
+/* Filter Bar */
+.filter-bar {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.filter-button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background: var(--white);
+  border-radius: 20px;
+  color: var(--gray);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-button.active {
+  background: var(--primary);
+  color: var(--white);
+}
+
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"></script>
+</head>
+<body>
+
+<nav class="sidenav">
+  <div class="logo">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="10"/>
+      <path d="M8 12h8"/>
+      <path d="M12 8v8"/>
+    </svg>
+    Cluster
+  </div>
+  
+  <a href="index.html" class="nav-item active">
+    <i data-feather="home"></i>
+    Accueil
+  </a>
+  
+  <a href="my-cluster.html" class="nav-item">
+    <i data-feather="folder"></i>
+    Mes Clusters
+  </a>
+  
+  <a href="explorer.html" class="nav-item">
+    <i data-feather="compass"></i>
+    Explorer
+  </a>
+  
+  <a href="notications.html" class="nav-item">
+    <i data-feather="bell"></i>
+    Notifications
+  </a>
+  
+  <a href="profil.html" class="nav-item">
+    <i data-feather="user"></i>
+    Profil
+  </a>
+</nav>
+
+<main class="main-content">
+  <div class="filter-bar">
+    <button class="filter-button active">Tous</button>
+    <button class="filter-button">En cours</button>
+    <button class="filter-button">Terminés</button>
+    <button class="filter-button">Archivés</button>
+  </div>
+
+  <div class="clusters-grid">
+    <!-- Cluster 1 -->
+    <div class="cluster-card">
+      <div class="cluster-header">
+        <span class="cluster-type">Design</span>
+        <h3>Design System</h3>
+      </div>
+      <div class="cluster-body">
+        <h3 class="cluster-title">Design System V2</h3>
+        <p class="cluster-description">Refonte complète du système de design pour une meilleure cohérence visuelle.</p>
+        <div class="cluster-stats">
+          <div class="cluster-stat">
+            <i data-feather="users" size="14"></i>
+            <span>8 membres</span>
+          </div>
+          <div class="cluster-stat">
+            <i data-feather="calendar" size="14"></i>
+            <span>2 semaines</span>
+          </div>
+        </div>
+        <div class="progress-bar">
+          <div class="progress" style="width: 75%"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cluster 2 -->
+    <div class="cluster-card">
+      <div class="cluster-header">
+        <span class="cluster-type">Marketing</span>
+        <h3>Campagne Q4</h3>
+      </div>
+      <div class="cluster-body">
+        <h3 class="cluster-title">Campagne Marketing Q4</h3>
+        <p class="cluster-description">Planification et exécution de la campagne du dernier trimestre.</p>
+        <div class="cluster-stats">
+          <div class="cluster-stat">
+            <i data-feather="users" size="14"></i>
+            <span>5 membres</span>
+          </div>
+          <div class="cluster-stat">
+            <i data-feather="calendar" size="14"></i>
+            <span>1 mois</span>
+          </div>
+        </div>
+        <div class="progress-bar">
+          <div class="progress" style="width: 45%"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cluster 3 -->
+    <div class="cluster-card">
+      <div class="cluster-header">
+        <span class="cluster-type">Dev</span>
+        <h3>API v3</h3>
+      </div>
+      <div class="cluster-body">
+        <h3 class="cluster-title">API Version 3</h3>
+        <p class="cluster-description">Développement de nouvelles fonctionnalités pour l'API.</p>
+        <div class="cluster-stats">
+          <div class="cluster-stat">
+            <i data-feather="users" size="14"></i>
+            <span>4 membres</span>
+          </div>
+          <div class="cluster-stat">
+            <i data-feather="calendar" size="14"></i>
+            <span>3 mois</span>
+          </div>
+        </div>
+        <div class="progress-bar">
+          <div class="progress" style="width: 30%"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="create-cluster">
+    <i data-feather="plus"></i>
+  </div>
+</main>
+
+<script>
+feather.replace();
+
+// Filter buttons interaction
+document.querySelectorAll('.filter-button').forEach(button => {
+  button.addEventListener('click', () => {
+    document.querySelector('.filter-button.active').classList.remove('active');
+    button.classList.add('active');
+  });
+});
+
+// Initialize progress bars with animation
+document.querySelectorAll('.progress').forEach(progress => {
+  const targetWidth = progress.style.width;
+  progress.style.width = '0';
+  setTimeout(() => {
+    progress.style.width = targetWidth;
+  }, 300);
+});
+
+// Card hover effects
+document.querySelectorAll('.cluster-card').forEach(card => {
+  card.addEventListener('mouseenter', () => {
+    card.style.transform = 'translateY(-5px)';
+  });
+  
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = 'translateY(0)';
+  });
+});
+
+// Create cluster button interaction
+const createButton = document.querySelector('.create-cluster');
+createButton.addEventListener('click', () => {
+  // Add creation logic here
+  console.log('Creating new cluster...');
+});
+</script>
+
+</body></html>
